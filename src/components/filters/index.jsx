@@ -1,54 +1,36 @@
+/* eslint-disable no-unused-vars */
 import * as React from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import * as S from './Styled';
 
-const Filters = () => {
-  const [age, setAge] = React.useState('');
+const Filters = (filters) => {
+  const { section, windows, sort, handleSection, handleWindows, handleSort } =
+    filters;
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    handleSection(event.target.value);
   };
 
   return (
-    <div>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-helper-label">Age</InputLabel>
+    <S.Wrapper>
+      <FormControl sx={{ m: 2, minWidth: 220 }}>
+        <InputLabel id="Section">Section</InputLabel>
         <Select
-          labelId="demo-simple-select-helper-label"
-          id="demo-simple-select-helper"
-          value={age}
-          label="Age"
+          labelId="Section"
+          id="Section"
+          value={section}
+          label="Section"
           onChange={handleChange}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value="hot">hot</MenuItem>
+          <MenuItem value="top">top</MenuItem>
+          <MenuItem value="user">user</MenuItem>
         </Select>
-        <FormHelperText>With label + helper text</FormHelperText>
       </FormControl>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <Select
-          value={age}
-          onChange={handleChange}
-          displayEmpty
-          inputProps={{ 'aria-label': 'Without label' }}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-        <FormHelperText>Without label</FormHelperText>
-      </FormControl>
-    </div>
+    </S.Wrapper>
   );
 };
 

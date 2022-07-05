@@ -7,9 +7,6 @@ import Filters from '../../components/filters';
 import StandardImageList from '../../components/imageList';
 
 const Thumbnail = () => {
-  const images = useSelector(imageList);
-  const dispatch = useDispatch();
-
   // hot | top | user
   const [section, setSection] = useState('hot');
   // day | week | month | year | all
@@ -17,15 +14,25 @@ const Thumbnail = () => {
   // viral | top | time
   const [sort, setSort] = useState('viral');
 
+  const images = useSelector(imageList);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(fetchImages());
-  }, []); // add parameters here, and useCallback.
+    dispatch(fetchImages({ section, windows, sort }));
+  }, [section, windows, sort]);
 
   const bodyData = images.length ? <StandardImageList data={images} /> : '';
   return (
     <>
       <Header />
-      <Filters />
+      <Filters
+        section={section}
+        windows={windows}
+        sort={sort}
+        handleSection={setSection}
+        handleWindows={setWindows}
+        handleSort={setSort}
+      />
       {bodyData}
     </>
   );

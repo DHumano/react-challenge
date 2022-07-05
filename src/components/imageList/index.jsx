@@ -34,7 +34,7 @@ const StandardImageList = (props) => {
           }}
         >
           {results.map((item) => (
-            <S.ImageWrapper>
+            <S.ImageWrapper key={item.images[0].link}>
               <a href={item.images[0].link} target="_blank" rel="noreferrer">
                 <ImageListItem key={item}>
                   <img

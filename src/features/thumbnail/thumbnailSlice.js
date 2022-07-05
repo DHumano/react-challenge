@@ -7,8 +7,9 @@ const initialState = {
   status: 'idle'
 };
 
-export const fetchImages = createAsyncThunk('fetch', async (q) => {
-  const response = await getImages(q);
+export const fetchImages = createAsyncThunk('fetch', async (data) => {
+  const { section, windows, sort } = data;
+  const response = await getImages(section, windows, sort);
   // The value we return becomes the `fulfilled` action payload
   return response.data;
 });
