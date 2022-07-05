@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
@@ -6,25 +6,13 @@ import { ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import { theme, gridValues } from '../../helpers/themeHelper';
 import * as S from './Styled';
+import imageFormatting from '../../utils/imageUtils';
 
 const StandardImageList = (props) => {
   const { data } = props;
-  const [results, setResults] = useState([]);
+  const images = useMemo(() => imageFormatting(data), [data]);
 
-  const imageFormatting = () => {
-    const images = [...data];
-    const result = images.filter(
-      // filter to get just jpeg images
-      (item) => item.images && item.images[0].type === 'image/jpeg'
-    );
-    setResults(result);
-  };
-
-  useEffect(() => {
-    imageFormatting();
-  }, [data]);
-
-  const dataGrid = results.length ? (
+  const dataGrid = images.length ? (
     <S.Wrapper>
       <ThemeProvider theme={theme}>
         <Box
@@ -33,7 +21,7 @@ const StandardImageList = (props) => {
             gridTemplateColumns: gridValues
           }}
         >
-          {results.map((item) => (
+          {images.map((item) => (
             <S.ImageWrapper key={item.images[0].link}>
               <a href={item.images[0].link} target="_blank" rel="noreferrer">
                 <ImageListItem key={item}>
