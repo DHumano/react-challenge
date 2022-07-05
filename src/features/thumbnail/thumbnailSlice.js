@@ -18,11 +18,6 @@ export const thumbnailSlice = createSlice({
   name: 'thumbnail',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
-  reducers: {
-    increment: (state) => {
-      state.value += 1;
-    }
-  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchImages.pending, (state) => {
@@ -34,8 +29,6 @@ export const thumbnailSlice = createSlice({
       });
   }
 });
-
-export const { increment } = thumbnailSlice.actions;
 
 export const imageList = (state) => state.thumbnail.value;
 

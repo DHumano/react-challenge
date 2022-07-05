@@ -5,6 +5,7 @@ import { fetchImages, imageList } from './thumbnailSlice';
 import Header from '../../components/header';
 import Filters from '../../components/filters';
 import StandardImageList from '../../components/imageList';
+import Loader from '../../assets/Loader';
 
 const Thumbnail = () => {
   // hot | top | user
@@ -15,13 +16,16 @@ const Thumbnail = () => {
   const [sort, setSort] = useState('viral');
 
   const images = useSelector(imageList);
+  const status = useSelector((state) => state.thumbnail.status);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchImages({ section, windows, sort }));
   }, [section, windows, sort]);
 
-  const bodyData = images.length ? <StandardImageList data={images} /> : '';
+  const bodyData =
+    status === 'idle' ? <StandardImageList data={images} /> : <Loader />;
   return (
     <>
       <Header />
