@@ -1,10 +1,10 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
+import { ThemeProvider } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import { theme, gridValues } from '../../helpers/themeHelper';
 import * as S from './Styled';
 
 const StandardImageList = (props) => {
@@ -24,48 +24,52 @@ const StandardImageList = (props) => {
     imageFormatting();
   }, [data]);
 
-  const Loading = results.length ? (
+  const dataGrid = results.length ? (
     <S.Wrapper>
-      <ImageList
-        variant="masonry"
-        sx={{ width: 900, height: 'auto' }}
-        cols={3}
-        gap={8}
-      >
-        {results.map((item) => (
-          <S.ImageWrapper>
-            <ImageListItem key={item}>
-              <img
-                style={{ borderRadius: '10px' }}
-                src={`${item.images[0].link}?w=248&fit=crop&auto=format`}
-                srcSet={`${item.images[0].link}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                alt={item}
-                loading="lazy"
-              />
-              <ImageListItemBar
-                style={{
-                  borderBottomLeftRadius: '10px',
-                  borderBottomRightRadius: '10px'
-                }}
-                title={item.title}
-                subtitle={item.author}
-                actionIcon={
-                  <IconButton
-                    sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                    aria-label={`info about ${item.title}`}
+      <ThemeProvider theme={theme}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: gridValues
+          }}
+        >
+          {results.map((item) => (
+            <S.ImageWrapper>
+              <a href={item.images[0].link} target="_blank" rel="noreferrer">
+                <ImageListItem key={item}>
+                  <img
+                    style={{ borderRadius: '10px', maxHeight: '400px' }}
+                    src={`${item.images[0].link}?w=248&fit=crop&auto=format`}
+                    srcSet={`${item.images[0].link}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                    alt={item}
+                    loading="lazy"
                   />
-                }
-              />
-            </ImageListItem>
-          </S.ImageWrapper>
-        ))}
-      </ImageList>
+                  <ImageListItemBar
+                    style={{
+                      borderBottomLeftRadius: '10px',
+                      borderBottomRightRadius: '10px'
+                    }}
+                    title={item.title}
+                    subtitle={item.author}
+                    actionIcon={
+                      <IconButton
+                        sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+                        aria-label={`info about ${item.title}`}
+                      />
+                    }
+                  />
+                </ImageListItem>
+              </a>
+            </S.ImageWrapper>
+          ))}
+        </Box>
+      </ThemeProvider>
     </S.Wrapper>
   ) : (
     ''
   );
 
-  return <>{Loading}</>;
+  return <div>{dataGrid}</div>;
 };
 
 export default StandardImageList;

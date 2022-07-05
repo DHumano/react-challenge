@@ -7,7 +7,12 @@ const Header = styled.div`
   color: white;
   text-align: center;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  padding-left: 5em;
+  @media (max-width: 1260px) {
+    padding-left: 0;
+    justify-content: flex-start;
+  }
 `;
 
 const Text = styled.p`
