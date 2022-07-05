@@ -1,12 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
-// import token from '../features/token';
+import thumbnailReducer from '../features/thumbnail/thumbnailSlice';
 
 const store = configureStore({
   reducer: {
-    counter: counterReducer
-    // token,
-    // images,
+    counter: counterReducer,
+    thumbnail: thumbnailReducer
   }
 });
 
