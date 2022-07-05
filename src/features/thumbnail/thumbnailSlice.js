@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import fetchCount from './thumbnailAPI';
+import getImages from './thumbnailAPI';
 
 const initialState = {
-  value: 0,
+  value: {},
   status: 'idle'
 };
 
@@ -13,7 +13,7 @@ const initialState = {
 // code can then be executed and other actions can be dispatched. Thunks are
 // typically used to make async requests.
 export const fetchImages = createAsyncThunk('fetch', async (q) => {
-  const response = await fetchCount(q);
+  const response = await getImages(q);
   // The value we return becomes the `fulfilled` action payload
   return response.data;
 });
@@ -47,7 +47,7 @@ export const thumbnailSlice = createSlice({
       })
       .addCase(fetchImages.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.value += action.payload;
+        state.value = action.payload;
       });
   }
 });

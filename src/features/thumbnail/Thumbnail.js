@@ -6,11 +6,12 @@ import * as S from './Styled';
 import { fetchImages, imageList } from './thumbnailSlice';
 
 const Thumbnail = () => {
-  const count = useSelector(imageList);
+  const images = useSelector(imageList);
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
   const incrementValue = Number(incrementAmount) || 0;
+  // console.log(typeof images);
 
   return (
     <div>
@@ -18,6 +19,11 @@ const Thumbnail = () => {
         <button onClick={() => dispatch(fetchImages(incrementValue))}>
           guardar data
         </button>
+        <ul>
+          {images.map((element) => (
+            <li key={element.id}>{element.id}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );

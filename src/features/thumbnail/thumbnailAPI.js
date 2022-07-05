@@ -12,12 +12,9 @@ const requestOptions = {
   }
 };
 
-const fetchCount = (q = 'cats') =>
+const getImages = (q = 'cats') =>
   fetch('https://api.imgur.com/3/gallery/search?q=cats', requestOptions)
     .then((response) => response.json())
-    .then(console.log);
+    .then((response) => response);
 
-// eslint-disable-next-line no-promise-executor-return
-// new Promise((resolve) => setTimeout(() => resolve({ data: amount }), 500));
-
-export default fetchCount;
+export default getImages;
