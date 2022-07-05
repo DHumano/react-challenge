@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as S from './Styled';
@@ -11,12 +10,14 @@ const Thumbnail = () => {
   const [incrementAmount, setIncrementAmount] = useState('2');
 
   const incrementValue = Number(incrementAmount) || 0;
-  // console.log(typeof images);
 
   return (
     <div>
       <div>
-        <button onClick={() => dispatch(fetchImages(incrementValue))}>
+        <button
+          type="button"
+          onClick={() => dispatch(fetchImages(incrementValue))}
+        >
           guardar data
         </button>
         <ul>
