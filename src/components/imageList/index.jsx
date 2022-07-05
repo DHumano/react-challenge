@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import ImageList from '@mui/material/ImageList';
@@ -23,7 +24,7 @@ const StandardImageList = (props) => {
     imageFormatting();
   }, [data]);
 
-  return (
+  const Loading = results.length ? (
     <S.Wrapper>
       <ImageList
         variant="masonry"
@@ -60,7 +61,11 @@ const StandardImageList = (props) => {
         ))}
       </ImageList>
     </S.Wrapper>
+  ) : (
+    ''
   );
+
+  return <>{Loading}</>;
 };
 
 export default StandardImageList;

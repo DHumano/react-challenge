@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchImages, imageList } from './thumbnailSlice';
+import Header from '../../components/header';
 import StandardImageList from '../../components/imageList';
 
 const Thumbnail = () => {
@@ -12,7 +13,13 @@ const Thumbnail = () => {
     dispatch(fetchImages());
   }, []); // add parameters here, and useCallback.
 
-  return <StandardImageList data={images} />;
+  const bodyData = images.length ? <StandardImageList data={images} /> : '';
+  return (
+    <>
+      <Header />
+      {bodyData}
+    </>
+  );
 };
 
 export default Thumbnail;
