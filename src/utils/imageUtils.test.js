@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import imageFormatting from './imageUtils';
 
 describe('Image utils', () => {

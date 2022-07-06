@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import thumbnailReducer from './thumbnailSlice';
 
 describe('counter reducer', () => {

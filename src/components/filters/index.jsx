@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import Filter from './Filter';
 import * as S from './Styled';
 import {
