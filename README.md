@@ -5,8 +5,9 @@ or you can install it locally following the next steps.
 ## Available Scripts
 In the project directory, you can run:
 
-### `npm install`
-Run this command to install any dependencies before start the project.(mandatory)
+### `Installation`
+Run "npm install" command to install any dependencies before start the project.(mandatory)
+Copy the .env.example and create a .env file with the environment variables.
 
 ### `npm start`
 IMGUR API doesn't admit getting requested from localhost or your private ip, you must use your public IP (terminal -> ipconfig)
