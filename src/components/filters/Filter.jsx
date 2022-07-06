@@ -11,13 +11,13 @@ const Filter = (props) => {
   };
 
   return (
-    <FormControl sx={{ m: 2, minWidth: 220 }}>
-      <InputLabel id="Section">{type}</InputLabel>
+    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+      <InputLabel id={type}>{type}</InputLabel>
       <Select
-        labelId="Section"
-        id="Section"
+        labelId={type}
+        id={type}
         value={value}
-        label="Section"
+        label={type}
         onChange={handleChange}
       >
         {valueTypes.map((element) => (

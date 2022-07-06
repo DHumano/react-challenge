@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchImages, imageList } from './thumbnailSlice';
@@ -8,11 +7,11 @@ import StandardImageList from '../../components/imageList';
 import Loader from '../../assets/Loader';
 
 const Thumbnail = () => {
-  // hot | top | user
+  // options: hot | top | user
   const [section, setSection] = useState('hot');
-  // day | week | month | year | all
+  // options: day | week | month | year | all
   const [windows, setWindows] = useState('day');
-  // viral | top | time
+  // options: viral | top | time
   const [sort, setSort] = useState('viral');
 
   const images = useSelector(imageList);
