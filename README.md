@@ -10,7 +10,14 @@ Run "npm install" command to install any dependencies before start the project.(
 Copy the .env.example and create a .env file with the environment variables.
 
 ### `npm start`
-IMGUR API doesn't admit getting requested from localhost or your private ip, you must use your public IP (terminal -> ipconfig)
+IMGUR API doesn't admit getting requested from localhost or your private ip
+When compiled, will prompt to you 
+`
+Local:            http://localhost:3000/react-challenge  
+On Your Network:  http://XXX.X.X.X:3000/react-challenge
+`
+You must use Network!
+
 Runs the app in the development mode.\
 Open [http://your-ip:3000](http://your-ip:3000) to view it in your browser.
 
