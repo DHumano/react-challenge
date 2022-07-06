@@ -1,3 +1,7 @@
+## Project Deployed 
+You can view the challenge in this url: [https://dhumano.github.io/react-challenge/]
+or you can install it locally following the next steps.
+
 ## Available Scripts
 In the project directory, you can run:
 
