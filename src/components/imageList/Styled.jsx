@@ -1,18 +1,24 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const Container = styled.div`
   background-color: rgb(181 154 154 / 12%);
-  padding: 2em;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+`;
+
+const Wrapper = styled.div`
+  padding: 1em 1em 1em;
 `;
 
 const ImageWrapper = styled.div`
-  margin: 10px;
+  margin: 5px;
   &:hover {
     transition: 0.2s all;
     opacity: 0.7;
     cursor: pointer;
-    margin: 5px;
+    margin: 2px;
   }
 `;
 
-export { Wrapper, ImageWrapper };
+export { Container, Wrapper, ImageWrapper };

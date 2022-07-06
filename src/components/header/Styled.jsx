@@ -10,8 +10,7 @@ const Header = styled.div`
   justify-content: flex-start;
   padding-left: 5em;
   @media (max-width: 1260px) {
-    padding-left: 0;
-    justify-content: flex-start;
+    padding-left: 15%;
   }
 `;
 
@@ -21,7 +20,6 @@ const Text = styled.p`
     opacity: 0.7;
     cursor: pointer;
   }
-  margin: 20px;
 `;
 
 export { Header, Text };

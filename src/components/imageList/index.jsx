@@ -26,9 +26,12 @@ const StandardImageList = (props) => {
               <a href={item.images[0].link} target="_blank" rel="noreferrer">
                 <ImageListItem key={item}>
                   <img
-                    style={{ borderRadius: '10px', maxHeight: '400px' }}
-                    src={`${item.images[0].link}?w=248&fit=crop&auto=format`}
-                    srcSet={`${item.images[0].link}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                    style={{
+                      borderRadius: '10px',
+                      height: '280px',
+                      width: '280px'
+                    }}
+                    src={`${item.images[0].link}`}
                     alt={item}
                     loading="lazy"
                   />
@@ -57,7 +60,7 @@ const StandardImageList = (props) => {
     ''
   );
 
-  return <div>{dataGrid}</div>;
+  return <S.Container>{dataGrid}</S.Container>;
 };
 
 export default StandardImageList;
